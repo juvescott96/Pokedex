@@ -3,7 +3,19 @@ function fetchPokemonAPI(){
     .then(response => response.json())
     .then(function(allpokemon){
      allpokemon.results.forEach(function(pokemon){
-     console.log(pokemon);
+     fetchPokemonData(pokemon);
      })
+    })
+ }
+
+ function fetchPokemonData(pokemon){
+    let url = pokemon.url;
+    fetch(url)
+    .then(response => response.json())
+    .then(function(pokemonData){
+        console.log(pokemonData);
+    })
+    .catch(function(error){
+        console.error('Error fetching Pokémon data:', error);
     })
  }
