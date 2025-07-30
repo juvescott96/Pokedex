@@ -1,8 +1,11 @@
 
 
-function  renderPokemon(pokemonData) {
+function renderPokemonList(pokemonArray){
     let allPokemonContainer = document.getElementById('pokemon-card');
-    let content = `
+    allPokemonContainer.innerHTML = '';
+
+    pokemonArray.forEach(pokemonData => {
+         let content = `
                     <div class="content-pokemon">
                     <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
                     <p>N° ${pokemonData.id}</p>
@@ -14,4 +17,5 @@ function  renderPokemon(pokemonData) {
                   `;
 
     allPokemonContainer.innerHTML += content;
+    });
 }

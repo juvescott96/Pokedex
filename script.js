@@ -1,5 +1,7 @@
+let allPokemonList = [];
+
 function fetchPokemonAPI() {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=10')
         .then(response => response.json())
         .then(function (allpokemon) {
             allpokemon.results.forEach(function (pokemon) {
@@ -14,8 +16,9 @@ function fetchPokemonData(pokemon) {
         .then(response => response.json())
         .then(function (pokemonData) {
             console.log(pokemonData);
+            allPokemonList.push(pokemonData);
             
-            renderPokemon(pokemonData);;
+            renderPokemonList(allPokemonList);
         })
         .catch(function (error) {
             console.error('Error fetching Pokémon data:', error);
@@ -23,3 +26,12 @@ function fetchPokemonData(pokemon) {
 }
 
 
+document.getElementById('searchInput').addEventListener('input', function (e) {
+    const searchValue = e.target.value.toLowerCase();
+
+    const filtered = allPokemonList.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(searchValue)
+    );
+
+    renderPokemonList(filtered);
+});
