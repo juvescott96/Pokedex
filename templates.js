@@ -1,0 +1,17 @@
+
+
+function  renderPokemon(pokemonData) {
+    let allPokemonContainer = document.getElementById('pokemon-card');
+    let content = `
+                    <div class="content-pokemon">
+                    <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
+                    <p>#${pokemonData.id}</p>
+                    <ul>
+                        ${pokemonData.types.map(type => `<li>${type.type.name}</li>`).join('')}
+                    </ul>
+                    <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+                    </div>
+                  `;
+
+    allPokemonContainer.innerHTML += content;
+}
