@@ -13,7 +13,7 @@ async function loadAllPokemon() {
 
 async function loadAPI() {
     loading();
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
 }
 
@@ -45,8 +45,16 @@ async function fetchPokemonData(pokemon) {
     return await response.json();
 }
 
+function toggleOverlay(index) {
+    let overlay = document.getElementById('pokemon-overlay');
+    pokemonOverlay(allPokemonData, index);
+    overlay.classList.toggle('d_none');
+}
 
+function innerLogDown(event) {
+    event.stopPropagation();
 
+}
 document.getElementById('searchInput').addEventListener('input', function (e) {
     const searchValue = e.target.value.toLowerCase();
 

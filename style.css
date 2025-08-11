@@ -78,3 +78,33 @@ ul {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.d_none{
+    display: none;
+}
+
+.overlay {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.374);
+    
+}
+
+.pokemon-overlay-content{
+     height: 500px;
+    width: 500px;
+    background-color: rgb(75, 133, 139);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    gap: 30px;  
+}
