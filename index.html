@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body onload="fetchPokemonAPI()">
+<body onload="loadAllPokemon()">
 
     <header>
         <img class="img-title" src="./assets/img/pokemontitle.png" alt="Pokemon Title">
@@ -15,6 +15,8 @@
 
     <input type="text" id="searchInput" placeholder="Search Pokémon..." />
     <div class="pokemon-body" id="pokemon-card"></div>
+
+    <p id="loading"></p>
     
     <script src="./script.js"></script>
     <script src="./templates.js"></script>

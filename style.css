@@ -63,3 +63,18 @@ ul {
     transition: all ease 0.3s;
     cursor: pointer;
 }
+
+.loader {
+  border: 24px solid #f3f3f3; /* Hellgrauer Rand */
+  border-top: 20px solid #ff0000; /* Roter Rand oben */
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
