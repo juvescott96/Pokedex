@@ -13,7 +13,7 @@ async function loadAllPokemon() {
 
 async function loadAPI() {
     loading();
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500));
 
 }
 
@@ -36,8 +36,10 @@ async function fetchPokemonAPI() {
     for (let pokemon of allpokemon.results) {
         let pokemonData = await fetchPokemonData(pokemon);
         allPokemonData.push(pokemonData);
-        renderPokemonList(allPokemonData);
+
     }
+    renderPokemonList(allPokemonData);
+    console.log(allPokemonData);
 }
 
 async function fetchPokemonData(pokemon) {

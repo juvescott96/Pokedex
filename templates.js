@@ -10,7 +10,7 @@ function renderPokemonList(pokemonArray,) {
                     <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
                     <p>N° ${pokemonData.id}</p>
                     <ul>
-                     ${pokemonData.types.map(type => `<li>${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</li>`).join('')}
+                     ${pokemonData.types.map(type => ` <li class="bg_${type.type.name}"></li>`).join('')}
                     </ul>
                     <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
                     </div>
@@ -26,13 +26,15 @@ function pokemonOverlay(allPokemonData, index) {
   let overlayContent = `
                     <div onclick="toggleOverlay(${index})" class="overlay">
                     <div onclick="innerLogDown(event)" class="pokemon-overlay-content">
+                    <button onclick="toggleOverlay(${index})">X</button>
                     <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
                     <p>N° ${pokemonData.id}</p>
                     <ul>
-                     ${pokemonData.types.map(type => `<li>${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</li>`).join('')}
+                     ${pokemonData.types.map(type => ` <li class="bg_${type.type.name}"></li>`).join('')}
                     </ul>
                     <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
                     </div>
                   `;
   overlay.innerHTML = overlayContent;
 }
+

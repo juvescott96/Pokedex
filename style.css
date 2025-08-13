@@ -94,9 +94,9 @@ ul {
 }
 
 .pokemon-overlay-content{
-     height: 500px;
+    height: 500px;
     width: 500px;
-    background-color: rgb(75, 133, 139);
+    background-color: rgb(242, 242, 242);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -107,4 +107,97 @@ ul {
     align-items: center;
     border-radius: 20px;
     gap: 30px;  
+    
 }
+
+.bg_grass{
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.bg_poison{
+    background-color: purple;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_fire{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_water{
+    background-color: blue;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_bug{
+    background-color: #8B4513;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_normal{
+    background-color: #D3D3D3;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_electric{
+    background-color: yellow;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_fairy{
+    background-color: pink;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_fighting{
+    background-color: #8B0000;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_ghost{
+    background-color: #4B0082;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_ice{
+    background-color: #ADD8E6;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_rock{
+    background-color: #A52A2A;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_steel{
+    background-color: #C0C0C0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_dragon{
+    background-color: #00008B;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.bg_dark{
+    background-color: #696969;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}         
