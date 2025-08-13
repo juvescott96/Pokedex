@@ -1,5 +1,7 @@
 let allPokemonData = [];
 
+let currentIndex = 0;
+
 async function loadAllPokemon() {
     try {
         await loadAPI();
@@ -30,7 +32,7 @@ function afterLoad() {
 
 
 async function fetchPokemonAPI() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15');
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10');
     let allpokemon = await response.json();
 
     for (let pokemon of allpokemon.results) {
@@ -49,14 +51,27 @@ async function fetchPokemonData(pokemon) {
 
 function toggleOverlay(index) {
     let overlay = document.getElementById('pokemon-overlay');
-    pokemonOverlay(allPokemonData, index);
+    currentIndex = index;
+    pokemonOverlay(allPokemonData, currentIndex);
     overlay.classList.toggle('d_none');
 }
 
 function innerLogDown(event) {
     event.stopPropagation();
-
 }
+
+function left(event) {
+    event.stopPropagation();
+    currentIndex = (currentIndex - 1 + allPokemonData.length) % allPokemonData.length;
+    pokemonOverlay(allPokemonData, currentIndex);
+}
+
+function right(event) {
+    event.stopPropagation();
+    currentIndex = (currentIndex + 1 ) % allPokemonData.length;
+    pokemonOverlay(allPokemonData, currentIndex);
+}
+
 document.getElementById('searchInput').addEventListener('input', function (e) {
     const searchValue = e.target.value.toLowerCase();
 

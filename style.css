@@ -79,6 +79,15 @@ ul {
   100% { transform: rotate(360deg); }
 }
 
+input{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 14px;
+}
+
 .d_none{
     display: none;
 }
@@ -90,7 +99,6 @@ ul {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.374);
-    
 }
 
 .pokemon-overlay-content{
@@ -103,101 +111,152 @@ ul {
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-radius: 20px;
     gap: 30px;  
     
 }
 
+.close-button{
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover{
+    transform: scale(1.15);
+    transition: all ease 0.5s;
+}
+
 .bg_grass{
-    background-color: green;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    background-color: rgb(0, 255, 0);
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 
 .bg_poison{
     background-color: purple;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_fire{
     background-color: red;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_water{
     background-color: blue;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_bug{
     background-color: #8B4513;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_normal{
     background-color: #D3D3D3;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_electric{
     background-color: yellow;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_fairy{
     background-color: pink;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_fighting{
     background-color: #8B0000;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_ghost{
     background-color: #4B0082;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_ice{
     background-color: #ADD8E6;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_rock{
     background-color: #A52A2A;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_steel{
     background-color: #C0C0C0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_dragon{
     background-color: #00008B;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
 }
 .bg_dark{
     background-color: #696969;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}         
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
+} 
+.bg_flying{
+    background-color: #87CEEB;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
+}
+.bg_ground{
+    background-color: #8B4513;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
+}
+.bg_psychic{
+    background-color: #FF69B4;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px;
+}
