@@ -1,3 +1,10 @@
+body{
+    margin: 0px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
 .img-title {
     width: 100%;
     height: 200px;
@@ -22,6 +29,10 @@ h4{
     padding: 0px;
     font-size: 16px;
     font-weight: bold;
+}
+h5{
+    margin: 4px 0px 4px 0px;
+ 
 }
 
 ul {
@@ -54,6 +65,9 @@ ul {
     justify-content: space-between;
     box-shadow: 0px 2.5px 2.5px 0px rgba(64, 54, 134, 0.5);
     transition: all ease 0.3s;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1)), url('/assets/img/wave-haikei.png');
+    background-size: cover;
+    cursor: pointer;
  
 }
 
@@ -61,7 +75,7 @@ ul {
     transform: scale(1.05);
     box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
     transition: all ease 0.3s;
-    cursor: pointer;
+    
 }
 
 .loader {
@@ -84,8 +98,10 @@ input{
     height: 30px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    padding: 5px;
     font-size: 14px;
+    box-sizing: border-box;
+    margin: 10px 0px 10px 0px;
+    background-color: transparent;
 }
 
 .d_none{
@@ -132,6 +148,31 @@ input{
     transform: scale(1.15);
     transition: all ease 0.5s;
 }
+
+.pokemon-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 10px;
+
+}
+
+.p-overlay{
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .bg_grass{
     background-color: rgb(0, 255, 0);

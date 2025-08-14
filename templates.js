@@ -28,16 +28,33 @@ function pokemonOverlay(allPokemonData, index) {
                     <div onclick="toggleOverlay(${index})" class="overlay">
                     <div onclick="innerLogDown(event)" class="pokemon-overlay-content">
                     <button class="close-button" onclick="toggleOverlay(${index})">X</button>
+                    <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+                    <p>N° ${pokemonData.id}</p>
+                    <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
+                    <ul>
+                     ${pokemonData.types.map(type => ` <li class="bg_${type.type.name}">${type.type.name}</li>`).join('')}
+                    </ul>
                     <div>
                     <button onclick="left(event)">left</button>
                     <button onclick="right(event)">right</button>
                     </div>
-                    <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
-                    <p>N° ${pokemonData.id}</p>
+                    <div class="pokemon-details">
+                    <div>
+                    <h5>Height</h5>
+                    <p class="p-overlay">${pokemonData.height / 10} m</p>
+                    </div>
+                    <div>
+                    <h5>Weight</h5>  
+                    <p class="p-overlay">${pokemonData.weight / 10} kg</p>
+                    </div>
+                    </div>
+                    <p>Base Experience: ${pokemonData.base_experience}</p>
+                    <p>Abilities:</p> 
                     <ul>
-                     ${pokemonData.types.map(type => ` <li class="bg_${type.type.name}">${type.type.name}</li>`).join('')}
+                     ${pokemonData.abilities.map(ability => ` <li>${ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</li>`).join('')}
                     </ul>
-                    <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+
+                    
                     </div>
                   `;
   overlay.innerHTML = overlayContent;
