@@ -32,7 +32,7 @@ function afterLoad() {
 
 
 async function fetchPokemonAPI() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=10');
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=40');
     let allpokemon = await response.json();
 
     for (let pokemon of allpokemon.results) {

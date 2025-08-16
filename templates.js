@@ -28,15 +28,15 @@ function pokemonOverlay(allPokemonData, index) {
                     <div onclick="toggleOverlay(${index})" class="overlay">
                     <div onclick="innerLogDown(event)" class="pokemon-overlay-content">
                     <button class="close-button" onclick="toggleOverlay(${index})">X</button>
-                    <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
-                    <p>N° ${pokemonData.id}</p>
-                    <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
-                    <ul>
-                     ${pokemonData.types.map(type => ` <li class="bg_${type.type.name}">${type.type.name}</li>`).join('')}
+                    <img class="img-overlay" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+                    <h6>N° ${pokemonData.id}</h6>
+                    <h4 class="h4-overlay">${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
+                    <ul class="type-list">
+                     ${pokemonData.types.map(type => `<li class="bg_${type.type.name}">${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</li>`).join('')}
                     </ul>
-                    <div>
-                    <button onclick="left(event)">left</button>
-                    <button onclick="right(event)">right</button>
+                    <div class="btn-container">
+                    <button onclick="left(event)" class="btn-left"></button>
+                    <button onclick="right(event)" class="btn-right"></button>
                     </div>
                     <div class="pokemon-details">
                     <div>
@@ -48,11 +48,16 @@ function pokemonOverlay(allPokemonData, index) {
                     <p class="p-overlay">${pokemonData.weight / 10} kg</p>
                     </div>
                     </div>
-                    <p>Base Experience: ${pokemonData.base_experience}</p>
-                    <p>Abilities:</p> 
-                    <ul>
-                     ${pokemonData.abilities.map(ability => ` <li>${ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</li>`).join('')}
+                    <div class="base-experience">
+                    <h5>Base Experience</h5>
+                    <p class="p-overlay">${pokemonData.base_experience}</p>
+                    </div>
+                    <div class="abilities">
+                    <h5>Abilities:</h5> 
+                    <ul class="pokemon-details">
+                     ${pokemonData.abilities.map(ability => ` <li class="p-overlay">${ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</li>`).join('')}
                     </ul>
+                    </div>
 
                     
                     </div>
