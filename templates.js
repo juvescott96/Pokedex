@@ -89,7 +89,23 @@ function showStats(index) {
     </div>
   `;
 }
+
 function showEvolution(index) {
+  let pokemonData = allPokemonData[index];
   let container = document.getElementById("tab-content");
-  container.innerHTML = `<p>Evolution data is not available in this version.</p>`;
+  container.innerHTML = `
+    <div class="evolution-chain">
+      <h5>Evolution Chain</h5>
+      <div class="evolution-items">
+        ${pokemonData.evolution.map((evo, i) => `
+          <div class="evolution-item">
+            <img src="${evo.sprite}" alt="${evo.name}">
+            <div>${evo.name.charAt(0).toUpperCase() + evo.name.slice(1)}</div>
+          </div>
+           ${i < pokemonData.evolution.length - 1 ? '<div style="font-size: 12px;">→</div>' : ''}
+        `).join('')}
+      </div>
+    </div>
+  `;
 }
+

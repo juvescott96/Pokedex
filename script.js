@@ -34,12 +34,49 @@ async function fetchPokemonAPI() {
 
     for (let pokemon of allpokemon.results) {
         let pokemonData = await fetchPokemonData(pokemon);
+        let evolutionData = await fetchEvolutionChain(pokemonData.species.url);
+        
+        pokemonData.evolution = evolutionData;
         allPokemonData.push(pokemonData);
-
     }
+
     renderPokemonList(allPokemonData);
     console.log(allPokemonData);
 }
+
+async function fetchEvolutionChain(speciesUrl) {
+  try {
+    
+    let speciesRes = await fetch(speciesUrl);
+    let speciesData = await speciesRes.json();
+
+    let evoRes = await fetch(speciesData.evolution_chain.url);
+    let evoData = await evoRes.json();
+
+    let names = [];
+    function traverse(evo) {
+      names.push(evo.species.name);
+      evo.evolves_to.forEach(next => traverse(next));
+    }
+    traverse(evoData.chain);
+
+    let sprites = [];
+    for (let name of names) {
+      let pokeRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      let pokeData = await pokeRes.json();
+      sprites.push({
+        name: pokeData.name,
+        sprite: pokeData.sprites.front_default
+      });
+    }
+
+    return sprites; 
+  } catch (err) {
+    console.error("Fehler Evolution Chain:", err);
+    return [];
+  }
+}
+
 
 async function fetchPokemonData(pokemon) {
     let response = await fetch(pokemon.url);
