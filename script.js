@@ -3,26 +3,23 @@ let allPokemonData = [];
 let currentIndex = 0;
 
 async function loadAllPokemon() {
-    try {
-        await loadAPI();
-    } catch (error) {
-        console.error('Error loading Pokémon data:', error);
-    }
-    await afterLoad();
-    fetchPokemonAPI();
 
-}
-
-async function loadAPI() {
     loading();
-    await new Promise(resolve => setTimeout(resolve, 500));
-
+    try {
+        await fetchPokemonAPI();
+        await renderPokemonList(allPokemonData);
+    } catch (error) {
+        console.log('Error fetching Pokémon data:', error);
+    }
+    afterLoad();
 }
+
 
 function loading() {
     let loadingElement = document.getElementById('loading');
     let content = `<div class="loader"></div>`;
     loadingElement.innerHTML = content;
+    setTimeout
 }
 
 function afterLoad() {
@@ -32,7 +29,7 @@ function afterLoad() {
 
 
 async function fetchPokemonAPI() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=40');
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30');
     let allpokemon = await response.json();
 
     for (let pokemon of allpokemon.results) {

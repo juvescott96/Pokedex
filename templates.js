@@ -1,11 +1,11 @@
 
 
 function renderPokemonList(pokemonArray,) {
-    let allPokemonContainer = document.getElementById('pokemon-card');
-    allPokemonContainer.innerHTML = '';
+  let allPokemonContainer = document.getElementById('pokemon-card');
+  allPokemonContainer.innerHTML = '';
 
-    pokemonArray.forEach((pokemonData, index) => {
-         let content = `
+  pokemonArray.forEach((pokemonData, index) => {
+    let content = `
                     <div onclick="toggleOverlay(${index})" class="content-pokemon">
                     <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
                     <p>N° ${pokemonData.id}</p>
@@ -18,7 +18,7 @@ function renderPokemonList(pokemonArray,) {
                   `;
 
     allPokemonContainer.innerHTML += content;
-    });
+  });
 }
 
 function pokemonOverlay(allPokemonData, index) {
@@ -34,34 +34,62 @@ function pokemonOverlay(allPokemonData, index) {
                     <ul class="type-list">
                      ${pokemonData.types.map(type => `<li class="bg_${type.type.name}">${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</li>`).join('')}
                     </ul>
+                    <div class="tab-menu">
+                    <p onclick="showAbout(${index})" id="tab-about">About</p>
+                    <p onclick="showStats(${index})" id="tab-stats">Stats</p>
+                    <p onclick="showEvolution(${index})" id="tab-evolution">Evolution</p>
+                    </div>
+                    <div id="tab-content"></div>
                     <div class="btn-container">
                     <button onclick="left(event)" class="btn-left"></button>
                     <button onclick="right(event)" class="btn-right"></button>
                     </div>
-                    <div class="pokemon-details">
-                    <div>
-                    <h5>Height</h5>
-                    <p class="p-overlay">${pokemonData.height / 10} m</p>
-                    </div>
-                    <div>
-                    <h5>Weight</h5>  
-                    <p class="p-overlay">${pokemonData.weight / 10} kg</p>
-                    </div>
-                    </div>
-                    <div class="base-experience">
-                    <h5>Base Experience</h5>
-                    <p class="p-overlay">${pokemonData.base_experience}</p>
-                    </div>
-                    <div class="abilities">
-                    <h5>Abilities:</h5> 
-                    <ul class="pokemon-details">
-                     ${pokemonData.abilities.map(ability => ` <li class="p-overlay">${ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</li>`).join('')}
-                    </ul>
-                    </div>
-
-                    
-                    </div>
                   `;
   overlay.innerHTML = overlayContent;
+
+  showAbout(index);
 }
 
+function showAbout(index) {
+  let pokemonData = allPokemonData[index];
+  let container = document.getElementById("tab-content");
+  container.innerHTML = `
+    <div class="pokemon-details">
+      <div>
+        <h5>Height</h5>
+        <p class="p-overlay">${pokemonData.height / 10} m</p>
+      </div>
+      <div>
+        <h5>Weight</h5>
+        <p class="p-overlay">${pokemonData.weight / 10} kg</p>
+      </div>
+    </div>
+           <div class="base-experience">
+      <h5>Base Experience</h5>
+      <p class="p-overlay">${pokemonData.base_experience}</p>
+    </div>
+    <div class="abilities">
+      <h5>Abilities:</h5>
+      <ul class="pokemon-details">
+        ${pokemonData.abilities.map(ability => `<li class="p-overlay">${ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+}
+
+function showStats(index) {
+  let pokemonData = allPokemonData[index];
+  let container = document.getElementById("tab-content");
+  container.innerHTML = `
+    <div class="stats">
+      <h5>Base Stats</h5>
+      <ul class="ul-stats">
+        ${pokemonData.stats.map(stat => `<li>${stat.stat.name}: ${stat.base_stat}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+}
+function showEvolution(index) {
+  let container = document.getElementById("tab-content");
+  container.innerHTML = `<p>Evolution data is not available in this version.</p>`;
+}
