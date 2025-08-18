@@ -1,6 +1,6 @@
 
 
-function renderPokemonList(pokemonArray,) {
+function renderPokemonList(pokemonArray) {
   let allPokemonContainer = document.getElementById('pokemon-card');
   allPokemonContainer.innerHTML = '';
 

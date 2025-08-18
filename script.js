@@ -114,9 +114,14 @@ function right(event) {
 document.getElementById('searchInput').addEventListener('input', function (e) {
     const searchValue = e.target.value.toLowerCase();
 
-    const filtered = allPokemonData.filter(pokemon =>
-        pokemon.name.toLowerCase().includes(searchValue)
-    );
-
-    renderPokemonList(filtered);
+    if (searchValue.length >= 3) {
+        const filtered = allPokemonData.filter(pokemon =>
+            pokemon.name.toLowerCase().includes(searchValue)
+        );
+        renderPokemonList(filtered);
+    } else {
+        // z.B. wieder alle anzeigen oder Liste leeren
+        renderPokemonList(allPokemonData);
+        // oder: renderPokemonList([]); wenn du es leer haben willst
+    }
 });
