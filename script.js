@@ -1,12 +1,14 @@
 let allPokemonData = [];
-
+let offset = 0;
+const limit = 30;
+const maxPokemon = 180;
 let currentIndex = 0;
 
 async function loadAllPokemon() {
 
     loading();
     try {
-        await fetchPokemonAPI();
+        await fetchPokemonAPI(offset);
         await renderPokemonList(allPokemonData);
     } catch (error) {
         console.log('Error fetching Pokémon data:', error);
@@ -25,11 +27,12 @@ function loading() {
 function afterLoad() {
     let loadingElement = document.getElementById('loading');
     loadingElement.innerHTML = '';
+    document.getElementById('more-loading').style.display = 'block';
 }
 
 
-async function fetchPokemonAPI() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30');
+async function fetchPokemonAPI(offset) {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
     let allpokemon = await response.json();
 
     for (let pokemon of allpokemon.results) {
@@ -40,8 +43,8 @@ async function fetchPokemonAPI() {
         allPokemonData.push(pokemonData);
     }
 
+
     renderPokemonList(allPokemonData);
-    console.log(allPokemonData);
 }
 
 async function fetchEvolutionChain(speciesUrl) {
@@ -120,8 +123,18 @@ document.getElementById('searchInput').addEventListener('input', function (e) {
         );
         renderPokemonList(filtered);
     } else {
-        // z.B. wieder alle anzeigen oder Liste leeren
         renderPokemonList(allPokemonData);
-        // oder: renderPokemonList([]); wenn du es leer haben willst
     }
 });
+
+async function moreLoading() {
+    offset += limit; // nächster Block
+    if (offset < maxPokemon) {
+        await fetchPokemonAPI(offset);
+    }
+
+    // Wenn wir bei 151 angekommen sind, Button ausblenden
+    if (offset + limit >= maxPokemon) {
+        document.getElementById('more-loading').style.display = "none";
+    }
+}

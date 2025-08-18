@@ -12,14 +12,17 @@
     <header>
         <img class="img-title" src="./assets/img/pokemontitle.png" alt="Pokemon Title">
     </header>
-
+    <div class="body-pokemon">
     <input type="text" id="searchInput" placeholder="Search Pokémon..." />
     <div class="pokemon-body" id="pokemon-card"></div>
 
     <p id="loading"></p>
+    <button onclick="moreLoading()" id="more-loading">more loading</button>
+     </div>
 
-    <div onclick="toggleOverlay()" id="pokemon-overlay" class="d_none"></div>
     
+    <div onclick="toggleOverlay()" id="pokemon-overlay" class="d_none"></div>
+
     <script src="./script.js"></script>
     <script src="./templates.js"></script>
 </body>
