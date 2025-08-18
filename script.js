@@ -35,7 +35,7 @@ async function fetchPokemonAPI() {
     for (let pokemon of allpokemon.results) {
         let pokemonData = await fetchPokemonData(pokemon);
         let evolutionData = await fetchEvolutionChain(pokemonData.species.url);
-        
+
         pokemonData.evolution = evolutionData;
         allPokemonData.push(pokemonData);
     }
@@ -45,36 +45,36 @@ async function fetchPokemonAPI() {
 }
 
 async function fetchEvolutionChain(speciesUrl) {
-  try {
-    
-    let speciesRes = await fetch(speciesUrl);
-    let speciesData = await speciesRes.json();
+    try {
 
-    let evoRes = await fetch(speciesData.evolution_chain.url);
-    let evoData = await evoRes.json();
+        let speciesRes = await fetch(speciesUrl);
+        let speciesData = await speciesRes.json();
 
-    let names = [];
-    function traverse(evo) {
-      names.push(evo.species.name);
-      evo.evolves_to.forEach(next => traverse(next));
+        let evoRes = await fetch(speciesData.evolution_chain.url);
+        let evoData = await evoRes.json();
+
+        let names = [];
+        function traverse(evo) {
+            names.push(evo.species.name);
+            evo.evolves_to.forEach(next => traverse(next));
+        }
+        traverse(evoData.chain);
+
+        let sprites = [];
+        for (let name of names) {
+            let pokeRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+            let pokeData = await pokeRes.json();
+            sprites.push({
+                name: pokeData.name,
+                sprite: pokeData.sprites.front_default
+            });
+        }
+
+        return sprites;
+    } catch (err) {
+        console.error("Fehler Evolution Chain:", err);
+        return [];
     }
-    traverse(evoData.chain);
-
-    let sprites = [];
-    for (let name of names) {
-      let pokeRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-      let pokeData = await pokeRes.json();
-      sprites.push({
-        name: pokeData.name,
-        sprite: pokeData.sprites.front_default
-      });
-    }
-
-    return sprites; 
-  } catch (err) {
-    console.error("Fehler Evolution Chain:", err);
-    return [];
-  }
 }
 
 
@@ -88,6 +88,11 @@ function toggleOverlay(index) {
     currentIndex = index;
     pokemonOverlay(allPokemonData, currentIndex);
     overlay.classList.toggle('d_none');
+    if (!overlay.classList.contains('d_none')) {
+        document.body.classList.add('noscroll');
+    } else {
+        document.body.classList.remove('noscroll');
+    }
 }
 
 function innerLogDown(event) {
@@ -102,7 +107,7 @@ function left(event) {
 
 function right(event) {
     event.stopPropagation();
-    currentIndex = (currentIndex + 1 ) % allPokemonData.length;
+    currentIndex = (currentIndex + 1) % allPokemonData.length;
     pokemonOverlay(allPokemonData, currentIndex);
 }
 
