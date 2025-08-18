@@ -9,7 +9,7 @@ body{
 }
 
 .body-pokemon{
-    max-width: 1440px;
+    max-width: 1920px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,6 +161,27 @@ ul {
     width: 100%;
     text-align: center;
 }
+
+.spinner{
+
+    width: 36px;
+    height: 36px;
+    border: 5px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
 
 .loader {
         

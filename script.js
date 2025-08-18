@@ -127,14 +127,26 @@ document.getElementById('searchInput').addEventListener('input', function (e) {
     }
 });
 
+
+
 async function moreLoading() {
-    offset += limit; // nächster Block
+    const button = document.getElementById('more-loading');
+    const spinner = document.getElementById('spinner');
+
+    button.style.display = "none";
+    spinner.style.display = "inline-block";
+
+    offset += limit;
     if (offset < maxPokemon) {
         await fetchPokemonAPI(offset);
     }
 
-    // Wenn wir bei 151 angekommen sind, Button ausblenden
+    spinner.style.display = "none";
+
     if (offset + limit >= maxPokemon) {
-        document.getElementById('more-loading').style.display = "none";
+        button.style.display = "none";
+    } else {
+        button.style.display = "inline-block";
     }
 }
+
