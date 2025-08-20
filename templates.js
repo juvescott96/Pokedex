@@ -4,9 +4,12 @@ function renderPokemonList(pokemonArray) {
   let allPokemonContainer = document.getElementById('pokemon-card');
   allPokemonContainer.innerHTML = '';
 
-  pokemonArray.forEach((pokemonData, index) => {
+  pokemonArray.forEach((pokemonData) => {
+    
+    
+    const trueIndex = allPokemonData.findIndex(p => p.id === pokemonData.id);
     let content = `
-                    <div onclick="toggleOverlay(${index})" class="content-pokemon">
+                    <div onclick="toggleOverlay(${trueIndex})" class="content-pokemon">
                     <h4>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h4>
                     <p>N° ${pokemonData.id}</p>
                     <ul>
@@ -16,7 +19,6 @@ function renderPokemonList(pokemonArray) {
                     <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
                     </div>
                   `;
-
     allPokemonContainer.innerHTML += content;
   });
 }
@@ -100,7 +102,7 @@ function showEvolution(index) {
         ${pokemonData.evolution.map((evo, i) => `
           <div class="evolution-item">
             <img src="${evo.sprite}" alt="${evo.name}">
-            <div>${evo.name.charAt(0).toUpperCase() + evo.name.slice(1)}</div>
+            <div class="evo-name">${evo.name.charAt(0).toUpperCase() + evo.name.slice(1)}</div>
           </div>
            ${i < pokemonData.evolution.length - 1 ? '<div style="font-size: 12px;">→</div>' : ''}
         `).join('')}

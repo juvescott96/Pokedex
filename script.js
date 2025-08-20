@@ -42,8 +42,6 @@ async function fetchPokemonAPI(offset) {
         pokemonData.evolution = evolutionData;
         allPokemonData.push(pokemonData);
     }
-
-
     renderPokemonList(allPokemonData);
 }
 
